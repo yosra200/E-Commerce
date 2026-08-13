@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -11,6 +11,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Password;
 use App\Http\Requests\forgotPasswordRequest;
+use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {

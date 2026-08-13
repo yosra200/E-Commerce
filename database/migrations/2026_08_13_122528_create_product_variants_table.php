@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('product_variants', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('product_id')
@@ -19,17 +19,28 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->foreignId('color_id')
-                ->nullable()
                 ->constrained()
-                ->nullOnDelete();
+                ->cascadeOnDelete();
 
-            $table->string('image');
+            $table->foreignId('size_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
-            $table->boolean('is_primary')->default(false);
+            $table->string('sku')->unique();
 
-            $table->integer('sort_order')->default(0);
+            $table->decimal('price', 10, 2)->nullable();
+
+            $table->integer('stock')->default(0);
+
+            $table->boolean('is_active')->default(true);
 
             $table->timestamps();
+
+            $table->unique([
+                'product_id',
+                'color_id',
+                'size_id',
+            ]);
         });
     }
 
@@ -38,6 +49,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('product_variants');
     }
 };

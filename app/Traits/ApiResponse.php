@@ -14,12 +14,12 @@ trait ApiResponse
         ], $code);
     }
     public function successMessage($message = "تم بنجاح", $code = 200)
-{
-    return response()->json([
-        'status' => 'success',
-        'message' => $message,
-    ], $code);
-}
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => $message,
+        ], $code);
+    }
     // رسالة الفشل / الخطأ
     public function errorResponse($message = "حدث خطأ", $code = 400, $errors = null)
     {
@@ -31,10 +31,10 @@ trait ApiResponse
 
 
     public function codeSentResponse($message = "تم إرسال الكود بنجاح")
-{
-    return response()->json([
-        'status' => 'success',
-        'message' => $message,
-    ], 200);
-}
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => $message,
+        ], 200);
+    }
 }
