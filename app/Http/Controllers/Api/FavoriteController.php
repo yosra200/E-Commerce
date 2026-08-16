@@ -36,10 +36,20 @@ class FavoriteController extends Controller
     public function store(AddFavoriteRequest $request)
     {
         $user = auth()->user();
-        $favorite = Favorite::create([
-            'user_id' => $user->id,
-            'product_id' => $request->product_id
+        $favorite = $user->favorites()
+            ->where('product_id', $request->product_id)
+            ->first();
+
+        if ($favorite) {
+            $favorite->delete();
+
+            return $this->successMessage(__('messages.favorite_removed_successfully'));
+        }
+
+        $favorite = $user->favorites()->create([
+            'product_id' => $request->product_id,
         ]);
+
         return $this->successResponse($favorite, __('messages.favorite_added_successfully'));
     }
     public function destroy($id)
