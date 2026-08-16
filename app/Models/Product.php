@@ -9,10 +9,10 @@ class Product extends Model
     protected $fillable = [
         'category_id',
         'name',
-        'slug',
         'description',
         'price',
-        'image',
+        'compare_price',
+        'sku',
         'is_active',
         'sort_order'
     ];

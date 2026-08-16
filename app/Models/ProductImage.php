@@ -10,6 +10,8 @@ class ProductImage extends Model
         'product_id',
         'image',
         'color_id',
+        'is_primary',
+        'sort_order',
     ];
 
     public function product()
@@ -17,4 +19,3 @@ class ProductImage extends Model
         return $this->belongsTo(Product::class);
     }
 }
-    
