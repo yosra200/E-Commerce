@@ -11,16 +11,28 @@ use App\Http\Resources\prouductResource;
 class ProductController extends Controller
 {
     use ApiResponse;
+
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with([
+            'category',
+            'images.color',
+            'variants.color',
+            'variants.size',
+        ])->get();
+
         return $this->successResponse(prouductResource::collection($products), __('messages.products_retrieved_successfully'));
     }
 
 
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::with([
+            'category',
+            'images.color',
+            'variants.color',
+            'variants.size',
+        ])->find($id);
         if (!$product) {
             return $this->errorResponse(__('messages.product_not_found'), 404);
         }
