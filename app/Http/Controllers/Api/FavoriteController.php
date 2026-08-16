@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use App\Models\Favorite;
 use App\Http\Requests\AddFavoriteRequest;
+use App\Http\Resources\prouductResource;
 
 class FavoriteController extends Controller
 {
@@ -14,9 +15,22 @@ class FavoriteController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $favorites = $user->favorites()->with('product')->get();
+        $products = $user->favorites()
+            ->with([
+                'product.category',
+                'product.images.color',
+                'product.variants.color',
+                'product.variants.size',
+            ])
+            ->get()
+            ->pluck('product')
+            ->filter()
+            ->values();
 
-        $this->successResponse($favorites, __('messages.favorites_retrieved_successfully'));
+        return $this->successResponse(
+            prouductResource::collection($products),
+            __('messages.favorites_retrieved_successfully')
+        );
     }
 
     public function store(AddFavoriteRequest $request)
