@@ -25,20 +25,22 @@ class XsidePrintedTShirtSeeder extends Seeder
         );
 
         $clothing = Category::firstOrCreate(
-            ['parent_id' => $men->id, 'slug->en' => 'clothing'],
+            ['slug->en' => 'men-clothing'],
             [
+                'parent_id' => $men->id,
                 'name' => ['en' => 'Clothing', 'ar' => 'ملابس'],
-                'slug' => ['en' => 'clothing', 'ar' => 'ملابس'],
+                'slug' => ['en' => 'men-clothing', 'ar' => 'ملابس-رجال'],
                 'is_active' => true,
                 'sort_order' => 1,
             ],
         );
 
         $tShirts = Category::firstOrCreate(
-            ['parent_id' => $clothing->id, 'slug->en' => 't-shirts'],
+            ['slug->en' => 'men-t-shirts'],
             [
+                'parent_id' => $clothing->id,
                 'name' => ['en' => 'T-Shirts', 'ar' => 'تي شيرتات'],
-                'slug' => ['en' => 't-shirts', 'ar' => 'تي-شيرتات'],
+                'slug' => ['en' => 'men-t-shirts', 'ar' => 'تي-شيرتات-رجال'],
                 'is_active' => true,
                 'sort_order' => 1,
             ],
