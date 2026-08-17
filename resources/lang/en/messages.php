@@ -10,4 +10,8 @@ return [
     'favorite_added_successfully' => 'Product added to favorites successfully',
     'favorite_removed_successfully' => 'Product removed from favorites successfully',
     'favorite_not_found' => 'Favorite not found',
+    'order_summary_retrieved_successfully' => 'Order summary retrieved successfully',
+    'order_created_successfully' => 'Order created successfully',
+    'orders_retrieved_successfully' => 'Orders retrieved successfully',
+    'cart_is_empty' => 'Cannot create an order from an empty cart',
 ];

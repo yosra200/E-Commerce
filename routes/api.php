@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\OrderController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -41,4 +42,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/favorites', [FavoriteController::class, 'index']);
     Route::post('/favorites', [FavoriteController::class, 'store']);
     Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy']);
+
+    //Cart routes
+    Route::get('/cart', [\App\Http\Controllers\Api\CartController::class, 'cart']);
+    Route::post('/cart', [\App\Http\Controllers\Api\CartController::class, 'addToCart']);
+    Route::delete('/cart/{id}', [\App\Http\Controllers\Api\CartController::class, 'removeFromCart']);
+
+    Route::get('/order-summary', [OrderController::class, 'orderSummary']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::post('/orders', [OrderController::class, 'store']);
 });
