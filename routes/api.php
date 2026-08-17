@@ -6,7 +6,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\SettingController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -34,6 +36,8 @@ Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::get('/settings', [SettingController::class, 'index']);
+Route::get('/faqs', [FaqController::class, 'index']);
 
 
 

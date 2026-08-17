@@ -14,4 +14,6 @@ return [
     'order_created_successfully' => 'Order created successfully',
     'orders_retrieved_successfully' => 'Orders retrieved successfully',
     'cart_is_empty' => 'Cannot create an order from an empty cart',
+    'settings_retrieved_successfully' => 'Settings retrieved successfully',
+    'faqs_retrieved_successfully' => 'FAQs retrieved successfully',
 ];

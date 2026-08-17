@@ -23,7 +23,7 @@ class CartController extends Controller
                 'productVariant.size',
             ])
             ->get();
-        return $this->successResponse(new CartResource($cartItems), __('messages.cart_retrieved_successfully'));
+        return $this->successResponse(CartResource::collection($cartItems), __('messages.cart_retrieved_successfully'));
     }
 
 
@@ -45,5 +45,4 @@ class CartController extends Controller
 
         return $this->successMessage(__('messages.product_removed_from_cart_successfully'));
     }
-
 }

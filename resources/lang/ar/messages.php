@@ -18,4 +18,6 @@ return [
     'order_created_successfully' => 'تم إنشاء الطلب بنجاح',
     'orders_retrieved_successfully' => 'تم استرجاع الطلبات بنجاح',
     'cart_is_empty' => 'لا يمكن إنشاء طلب من سلة فارغة',
+    'settings_retrieved_successfully' => 'تم استرجاع الإعدادات بنجاح',
+    'faqs_retrieved_successfully' => 'تم استرجاع الأسئلة الشائعة بنجاح',
 ];
