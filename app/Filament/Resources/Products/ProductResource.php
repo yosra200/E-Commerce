@@ -20,9 +20,9 @@ class ProductResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedShoppingBag;
 
-    protected static ?string $navigationLabel = 'Products';
+    protected static ?string $navigationLabel = 'المنتجات';
 
-    protected static ?string $modelLabel = 'Product';
+    protected static ?string $modelLabel = 'منتج';
 
     public static function form(Schema $schema): Schema
     {

@@ -14,13 +14,13 @@ class ProductsTable
     public static function configure(Table $table): Table
     {
         return $table->columns([
-            TextColumn::make('name.ar')->label('Name')->searchable(),
-            TextColumn::make('category.name.ar')->label('Category')->searchable(),
-            TextColumn::make('sku')->searchable(),
-            TextColumn::make('price')->money('EGP')->sortable(),
-            IconColumn::make('is_active')->boolean(),
-            TextColumn::make('sort_order')->sortable(),
-            TextColumn::make('created_at')->dateTime()->sortable(),
+            TextColumn::make('name.ar')->label('اسم المنتج')->searchable(),
+            TextColumn::make('category.name.ar')->label('القسم')->searchable(),
+            TextColumn::make('sku')->label('SKU')->searchable(),
+            TextColumn::make('price')->label('السعر')->money('EGP')->sortable(),
+            IconColumn::make('is_active')->label('ظاهر')->boolean(),
+            TextColumn::make('sort_order')->label('الترتيب')->sortable(),
+            TextColumn::make('created_at')->label('تاريخ الإضافة')->dateTime()->sortable(),
         ])->recordActions([
             EditAction::make(),
         ])->toolbarActions([

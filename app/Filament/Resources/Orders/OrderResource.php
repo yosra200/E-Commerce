@@ -19,7 +19,7 @@ class OrderResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
-    protected static ?string $navigationLabel = 'Orders';
+    protected static ?string $navigationLabel = 'الطلبات';
 
     public static function form(Schema $schema): Schema
     {

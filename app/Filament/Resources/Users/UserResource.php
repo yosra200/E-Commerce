@@ -23,7 +23,7 @@ class UserResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationLabel = 'Customers';
+    protected static ?string $navigationLabel = 'العملاء';
 
     public static function getEloquentQuery(): Builder
     {
