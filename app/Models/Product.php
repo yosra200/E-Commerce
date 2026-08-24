@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uploadable;
 
 class Product extends Model
 {
+
+    use Uploadable;
     protected $fillable = [
         'category_id',
         'name',
@@ -38,4 +41,7 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class);
     }
+
+
+    
 }

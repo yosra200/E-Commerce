@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;s
+use App\Models\Cart;
 use App\Models\Order;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\DB;
@@ -13,13 +13,13 @@ class OrderController extends Controller
     use ApiResponse;
 
     public function orderSummary()
-    {
+    { 
         $cartItems = Cart::query()
             ->where('user_id', auth()->id())
             ->with('productVariant.product')
             ->get();
 
-        $subtotal = 0.0;
+        $subtotal = 0.0;    
         $discount = 0.0;
 
         foreach ($cartItems as $cartItem) {
@@ -95,7 +95,7 @@ class OrderController extends Controller
             $order->items()->createMany($items);
             $user->cart()->delete();
 
-            return $order->load('items');
+            return $order->load('items'); 
         });
 
         if (! $order) {

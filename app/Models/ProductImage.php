@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uploadable;
+use Override;
 
 class ProductImage extends Model
 {
+    use Uploadable;
+
     protected $fillable = [
         'product_id',
         'image',
