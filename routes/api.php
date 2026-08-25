@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\ServiceRequestController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -55,4 +56,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/order-summary', [OrderController::class, 'orderSummary']);
     Route::get('/orders', [OrderController::class, 'index']);
     Route::post('/orders', [OrderController::class, 'store']);
+
+
+    Route::post('/service-requests', [ServiceRequestController::class, 'store']);
 });

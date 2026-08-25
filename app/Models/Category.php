@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
+    use HasTranslations;
     protected $fillable = [
         'parent_id',
         'name',
@@ -14,10 +16,11 @@ class Category extends Model
         'is_active',
         'sort_order'
     ];
+    public array $translatable = ['name', 'slug'];
 
     protected $casts = [
-        'name' => 'array',
-        'slug' => 'array',
+        // 'name' => 'JSON',
+        // 'slug' => 'array',
         'is_active' => 'boolean'
     ];
 

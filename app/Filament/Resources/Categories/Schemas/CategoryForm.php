@@ -4,7 +4,6 @@ namespace App\Filament\Resources\Categories\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
@@ -14,29 +13,41 @@ class CategoryForm
     {
         return $schema
             ->components([
-                TextInput::make('parent_id')
-                    ->label('الفئة الرئيسية')
-                    ->numeric()
-                    ->default(null),
-                Textarea::make('name')
-                    ->label('الاسم')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('slug')
-                    ->label('الرابط')
-                    ->required()
-                    ->columnSpanFull(),
+
+                TextInput::make('name.ar')
+                    ->label('الاسم بالعربي')
+                    ->rules(['required'])
+                    ->markAsRequired()->maxLength(255),
+
+                TextInput::make('name.en')
+                    ->label('الاسم بالانجليزيه')
+                    ->rules(['required'])
+                    ->markAsRequired()->maxLength(255),
+                // TextInput::make('slug_ar')
+                //     ->label('الرابط بالعربي')
+                //     ->required()
+                //     ->formatStateUsing(function ($state, $record) {
+                //         return $record
+                //             ? $record->getTranslation('slug', 'ar')
+                //             : $state;
+                //     }),
+
+                // TextInput::make('slug_en')
+                //     ->label('الرابط بالإنجليزي')
+                //     ->required()
+                //     ->formatStateUsing(function ($state, $record) {
+                //         return $record
+                //             ? $record->getTranslation('slug', 'en')
+                //             : $state;
+                //     }),
+
                 FileUpload::make('image')
                     ->label('الصورة')
                     ->image(),
+
                 Toggle::make('is_active')
                     ->label('نشط')
                     ->required(),
-                TextInput::make('sort_order')
-                    ->label('ترتيب الفئة')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
             ]);
     }
 }
