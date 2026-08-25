@@ -20,6 +20,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
             $table->integer('quantity')->default(1);
+            $table->boolean('installation_available')->nullable();
 
             $table->timestamps();
         });
