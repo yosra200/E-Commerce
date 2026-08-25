@@ -29,7 +29,7 @@ class CartController extends Controller
 
     public function addToCart(CartRequest $request)
     {
-        // dd($request->validated());
+        dd($request->validated());
 
         Cart::create($request->validated() + [
             'user_id' => auth()->id()
