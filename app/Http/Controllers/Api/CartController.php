@@ -29,9 +29,15 @@ class CartController extends Controller
 
     public function addToCart(CartRequest $request)
     {
-        Cart::create($request->validated() + ['user_id' => auth()->id()]);
+        dd($request->validated());
 
-        return $this->successMessage(__('messages.product_added_to_cart_successfully'));
+        Cart::create($request->validated() + [
+            'user_id' => auth()->id()
+        ]);
+
+        return $this->successMessage(
+            __('messages.product_added_to_cart_successfully')
+        );
     }
 
     public function removeFromCart($id)
