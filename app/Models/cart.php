@@ -14,9 +14,9 @@ class Cart extends Model
     ];
 
 
-    protected $casts = [
-        'installation_available' => 'boolean'
-    ];
+    // protected $casts = [
+    //     'installation_available' => 'boolean'
+    // ];
     public function user()
     {
         return $this->belongsTo(User::class);
