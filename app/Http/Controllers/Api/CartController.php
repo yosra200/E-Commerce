@@ -25,11 +25,11 @@ class CartController extends Controller
             ->get();
         return $this->successResponse(CartResource::collection($cartItems), __('messages.cart_retrieved_successfully'));
     }
-
+ 
 
     public function addToCart(CartRequest $request)
     {
-        dd($request->validated());
+        // dd($request->validated());
 
         Cart::create($request->validated() + [
             'user_id' => auth()->id()
