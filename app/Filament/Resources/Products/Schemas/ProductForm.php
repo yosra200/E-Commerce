@@ -20,7 +20,9 @@ class ProductForm
                 Select::make('category_id')
                     ->label('القسم')
                     ->relationship('category', 'id')
-                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
+                    ->getOptionLabelFromRecordUsing(
+                        fn($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id
+                    )
                     ->searchable()
                     ->preload()
                     ->required(),
@@ -53,7 +55,7 @@ class ProductForm
                         Select::make('color_id')
                             ->label('اللون المرتبط بالصورة')
                             ->relationship('color', 'id')
-                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
+                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
                             ->searchable()
                             ->preload(),
                         Toggle::make('is_primary')->label('الصورة الرئيسية')->default(false),
@@ -71,14 +73,14 @@ class ProductForm
                         Select::make('color_id')
                             ->label('اللون')
                             ->relationship('color', 'id')
-                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
+                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
                             ->searchable()
                             ->preload()
                             ->required(),
                         Select::make('size_id')
                             ->label('المقاس')
                             ->relationship('size', 'id')
-                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
+                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
                             ->searchable()
                             ->preload()
                             ->required(),
