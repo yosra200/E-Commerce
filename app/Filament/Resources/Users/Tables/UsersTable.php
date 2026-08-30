@@ -15,28 +15,52 @@ class UsersTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('الاسم')
                     ->searchable(),
+
                 TextColumn::make('phone')
+                    ->label('رقم الهاتف')
                     ->searchable(),
+
                 TextColumn::make('second_phone')
+                    ->label('رقم الهاتف الإضافي')
                     ->searchable(),
+
                 TextColumn::make('address')
+                    ->label('العنوان')
                     ->searchable(),
+
                 TextColumn::make('governorate')
+                    ->label('المحافظة')
                     ->searchable(),
+
                 TextColumn::make('email')
-                    ->label('Email address')
+                    ->label('البريد الإلكتروني')
                     ->searchable(),
+
                 TextColumn::make('email_verified_at')
+                    ->label('تاريخ تأكيد البريد الإلكتروني')
                     ->dateTime()
                     ->sortable(),
+
                 TextColumn::make('type')
-                    ->badge(),
+                    ->label('نوع المستخدم')
+                    ->badge()
+                    ->formatStateUsing(fn($state) => match ($state) {
+                        'admin' => 'مدير',
+                        'customer' => 'عميل',
+                        'delivery' => 'مندوب توصيل',
+                        default => $state,
+                    }),
+
                 TextColumn::make('created_at')
+                    ->label('تاريخ الإنشاء')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
+                    ->label('تاريخ التحديث')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -45,11 +69,13 @@ class UsersTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->label('تعديل'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->label('حذف المحدد'),
                 ]),
             ]);
     }

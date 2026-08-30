@@ -12,23 +12,57 @@ class OrdersTable
     public static function configure(Table $table): Table
     {
         return $table->columns([
-            TextColumn::make('id')->label('Order #')->sortable(),
-            TextColumn::make('user.name')->label('Customer')->searchable(),
-            TextColumn::make('user.phone')->label('Phone')->searchable(),
-            TextColumn::make('items_count')->counts('items')->label('Items'),
-            TextColumn::make('total')->money('EGP')->sortable(),
-            TextColumn::make('status')->badge(),
-            TextColumn::make('created_at')->dateTime()->sortable(),
+            TextColumn::make('id')
+                ->label('رقم الطلب')
+                ->sortable(),
+
+            TextColumn::make('user.name')
+                ->label('العميل')
+                ->searchable(),
+
+            TextColumn::make('user.phone')
+                ->label('رقم الهاتف')
+                ->searchable(),
+
+            TextColumn::make('items_count')
+                ->counts('items')
+                ->label('عدد المنتجات'),
+
+            TextColumn::make('total')
+                ->label('الإجمالي')
+                ->money('EGP')
+                ->sortable(),
+
+            TextColumn::make('status')
+                ->label('الحالة')
+                ->badge()
+                ->formatStateUsing(fn($state) => match ($state) {
+                    'pending' => 'قيد الانتظار',
+                    'processing' => 'قيد التجهيز',
+                    'shipped' => 'تم الشحن',
+                    'delivered' => 'تم التوصيل',
+                    'cancelled' => 'ملغي',
+                    default => $state,
+                }),
+
+            TextColumn::make('created_at')
+                ->label('تاريخ الطلب')
+                ->dateTime()
+                ->sortable(),
+
         ])->filters([
-            SelectFilter::make('status')->options([
-                'pending' => 'Pending',
-                'processing' => 'Processing',
-                'shipped' => 'Shipped',
-                'delivered' => 'Delivered',
-                'cancelled' => 'Cancelled',
-            ]),
+            SelectFilter::make('status')
+                ->label('الحالة')
+                ->options([
+                    'pending' => 'قيد الانتظار',
+                    'processing' => 'قيد التجهيز',
+                    'shipped' => 'تم الشحن',
+                    'delivered' => 'تم التوصيل',
+                    'cancelled' => 'ملغي',
+                ]),
         ])->recordActions([
-            EditAction::make(),
+            EditAction::make()
+                ->label('تعديل'),
         ]);
     }
 }

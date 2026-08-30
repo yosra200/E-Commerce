@@ -15,7 +15,7 @@ class ProductsTable
     {
         return $table->columns([
             TextColumn::make('name.ar')->label('اسم المنتج')->searchable(),
-            TextColumn::make('category.name.ar')->label('القسم')->searchable(),
+            TextColumn::make('category.name')->label('القسم')->searchable(),
             TextColumn::make('sku')->label('SKU')->searchable(),
             TextColumn::make('price')->label('السعر')->money('EGP')->sortable(),
             IconColumn::make('is_active')->label('ظاهر')->boolean(),
