@@ -41,4 +41,6 @@ class SettingsApiTest extends TestCase
             ->assertJsonPath('data.terms_and_conditions.ar', 'الشروط بالعربية')
             ->assertJsonPath('data.social_media.facebook', 'https://facebook.com');
     }
+
+    
 }

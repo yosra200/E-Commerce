@@ -38,6 +38,9 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/settings', [SettingController::class, 'index']);
+Route::get('/settings/social', [SettingController::class, 'social']);
+Route::get('/settings/privacy', [SettingController::class, 'privacy']);
+Route::get('/settings/terms', [SettingController::class, 'terms']);
 Route::get('/faqs', [FaqController::class, 'index']);
 
 
