@@ -25,7 +25,7 @@ class CartRequest extends FormRequest
         return [
             'product_variant_id' => ['required', 'exists:product_variants,id'],
             'quantity' => ['required', 'integer', 'min:1'],
-            'installation_available' => ['required', 'boolean'],
+            'installation_available' => ['required', 'in:0,1,true,false'],
 
         ];
     }
