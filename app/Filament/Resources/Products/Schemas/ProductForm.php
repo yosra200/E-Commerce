@@ -40,6 +40,7 @@ class ProductForm
             Section::make('السعر وحالة الظهور')->schema([
                 TextInput::make('price')->label('السعر')->numeric()->minValue(0)->required()->prefix('EGP'),
                 TextInput::make('compare_price')->label('السعر قبل الخصم')->numeric()->minValue(0)->gte('price')->prefix('EGP'),
+                TextInput::make('installation_price')->label('سعر التركيب')->numeric()->minValue(0)->default(0)->prefix('EGP'),
                 TextInput::make('sku')->label('كود المنتج SKU')->required()->maxLength(255)->unique(ignoreRecord: true),
                 // TextInput::make('sort_order')->label('ترتيب الظهور')->numeric()->integer()->minValue(0)->default(0)->required(),
                 Toggle::make('is_active')->label('ظاهر في المتجر')->default(true)->required(),

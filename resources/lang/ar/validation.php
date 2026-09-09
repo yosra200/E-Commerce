@@ -33,6 +33,18 @@ return [
     'phone.regex' => 'رقم الجوال يجب أن يكون رقم سعودي صحيح (يبدأ بـ 05 أو 5 ويتكون من 9 أرقام).',
 
     'attributes' => [
+        'category_id' => 'القسم',
+        'name.ar' => 'اسم المنتج بالعربي',
+        'name.en' => 'اسم المنتج بالإنجليزي',
+        'description.ar' => 'وصف المنتج بالعربي',
+        'description.en' => 'وصف المنتج بالإنجليزي',
+        'price' => 'السعر',
+        'compare_price' => 'السعر قبل الخصم',
+        'installation_price' => 'سعر التركيب',
+        'sku' => 'كود المنتج',
+        'is_active' => 'حالة الظهور',
+        'image' => 'الصورة',
+        'images' => 'صور المنتج',
         'installment_provider' => 'مزود التقسيط',
         'payment_type' => 'نوع الدفع',
         'rate' => 'التقييم',

@@ -18,6 +18,7 @@ class ProductsTable
             TextColumn::make('category.name')->label('القسم')->searchable(),
             TextColumn::make('sku')->label('SKU')->searchable(),
             TextColumn::make('price')->label('السعر')->money('EGP')->sortable(),
+            TextColumn::make('installation_price')->label('سعر التركيب')->money('EGP')->sortable(),
             IconColumn::make('is_active')->label('ظاهر')->boolean(),
             TextColumn::make('sort_order')->label('الترتيب')->sortable(),
             TextColumn::make('created_at')->label('تاريخ الإضافة')->dateTime()->sortable(),

@@ -6,6 +6,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Filament\Forms\Components\BaseFileUpload;
 
 class CategoryForm
 {
@@ -38,8 +40,25 @@ class CategoryForm
 
                 FileUpload::make('image')
                     ->label('الصورة')
-                    ->image(),
+                    ->rules(['required'])
+                    ->markAsRequired()->image()
+                    ->fetchFileInformation(false)
+                    ->saveUploadedFileUsing(fn(TemporaryUploadedFile $file): string => (new Category())->uploadFile($file, 'categories'))
+                    ->getUploadedFileUsing(static function (BaseFileUpload $component, string $file, string | array | null $storedFileNames): ?array {
+                        if (blank($file)) {
+                            return null;
+                        }
 
+                        $fileName = basename(str_replace('\\', '/', $file));
+
+                        return [
+                            'name' => $fileName,
+                            'size' => 0,
+                            'type' => null,
+                            // 'url' => asset('assets/uploads/categories/' . $fileName),
+                            'url' => asset('assets/uploads/categories/' . $fileName),
+                        ];
+                    }),
                 Toggle::make('is_active')
                     ->label('نشط')
                     ->required(),

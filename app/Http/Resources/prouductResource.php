@@ -16,6 +16,7 @@ class prouductResource extends JsonResource
     {
         $comparePrice = $this->compare_price !== null ? (float) $this->compare_price : null;
         $price = (float) $this->price;
+        $installationPrice = $this->installation_price !== null ? (float) $this->installation_price : 0.0;
         $discount = $comparePrice && $comparePrice > $price
             ? (int) round((($comparePrice - $price) / $comparePrice) * 100)
             : 0;
@@ -27,6 +28,7 @@ class prouductResource extends JsonResource
             'sku' => $this->sku,
             'price' => $price,
             'compare_price' => $comparePrice,
+            'installation_price' => $installationPrice,
             'discount_percentage' => $discount,
             'is_active' => $this->is_active,
             'category_id' => $this->category_id,

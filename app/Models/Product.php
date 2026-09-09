@@ -15,6 +15,7 @@ class Product extends Model
         'description',
         'price',
         'compare_price',
+        'installation_price',
         'sku',
         'is_active',
         'sort_order'
@@ -24,6 +25,7 @@ class Product extends Model
         'name' => 'array',
         'slug' => 'array',
         'description' => 'array',
+        'installation_price' => 'decimal:2',
         'is_active' => 'boolean'
     ];
 
