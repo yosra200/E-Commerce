@@ -32,14 +32,9 @@ class CategoryForm
                 //             : $state;
                 //     }),
 
-                // TextInput::make('slug_en')
-                //     ->label('الرابط بالإنجليزي')
-                //     ->required()
-                //     ->formatStateUsing(function ($state, $record) {
-                //         return $record
-                //             ? $record->getTranslation('slug', 'en')
-                //             : $state;
-                //     }),
+                TextInput::make('sulug')
+                    ->label('الرابط ')
+                    ->required(),
 
                 FileUpload::make('image')
                     ->label('الصورة')
