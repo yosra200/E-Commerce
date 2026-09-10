@@ -14,6 +14,14 @@ class ProductsTable
     public static function configure(Table $table): Table
     {
         return $table->columns([
+            ImageColumn::make('primary_image')
+                ->label('الصورة')
+                ->state(function ($record) {
+                    return $record->images()->where('is_primary', true)->value('image')
+                        ? asset('assets/uploads/products/' . $record->images()->where('is_primary', true)->value('image'))
+                        : ($record->images()->first()?->image ? asset('assets/uploads/products/' . $record->images()->first()->image) : null);
+                })
+                ->size(60),
             TextColumn::make('name.ar')->label('اسم المنتج')->searchable(),
             TextColumn::make('category.name')->label('القسم')->searchable(),
             TextColumn::make('sku')->label('SKU')->searchable(),

@@ -56,6 +56,11 @@ class Category extends Model
 
     public function getImageAttribute($value)
     {
-        return $value ? asset('assets/uploads/categories/' . $value) : '';
+        return $value;
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        return $this->image ? asset('assets/uploads/categories/' . $this->image) : '';
     }
 }

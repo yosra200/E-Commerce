@@ -51,6 +51,11 @@ class Product extends Model
 
     public function getImageAttribute($value)
     {
-        return $value ? asset('assets/uploads/products/' . $value) : '';
+        return $value;
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        return $this->image ? asset('assets/uploads/products/' . $this->image) : '';
     }
 }

@@ -17,15 +17,13 @@ class CategoriesTable
     {
         return $table
             ->columns([
-                // TextColumn::make('parent_id')
-                //     ->numeric()
-                //     ->sortable(),
-                // ImageColumn::make('image'),
+                ImageColumn::make('image_url')
+                    ->label('الصورة')
+                    ->size(60),
 
                 TextColumn::make('id')
                     ->label('ID')
                     ->searchable()
-
                     ->sortable(),
                 TextColumn::make('name_ar')
                     ->label('الاسم بالعربية')
