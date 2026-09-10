@@ -8,6 +8,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\BaseFileUpload;
+use App\Models\Category;
 
 class CategoryForm
 {
@@ -33,6 +34,7 @@ class CategoryForm
                 //             ? $record->getTranslation('slug', 'ar')
                 //             : $state;
                 //     }),
+
 
                 TextInput::make('sulug')
                     ->label('الرابط ')
