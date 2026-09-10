@@ -10,6 +10,7 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\BaseFileUpload;
 use App\Models\Category;
 
+
 class CategoryForm
 {
     public static function configure(Schema $schema): Schema
