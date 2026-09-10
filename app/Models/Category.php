@@ -31,8 +31,8 @@ class Category extends Model
         $base = blank($value)
             ? (
                 is_array($this->name)
-                    ? ($this->name['en'] ?? $this->name['ar'] ?? '')
-                    : ($this->name ?? '')
+                ? ($this->name['en'] ?? $this->name['ar'] ?? '')
+                : ($this->name ?? '')
             )
             : $value;
 

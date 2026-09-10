@@ -2,14 +2,17 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
-use Filament\Forms\Components\Select;
+use App\Models\ProductImage;
+use Filament\Forms\Components\BaseFileUpload;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ProductForm
 {
@@ -58,16 +61,33 @@ class ProductForm
                             ->image()
                             ->disk('public')
                             ->directory('products')
-                            ->required(),
-                        // Select::make('color_id')
-                        //     ->label('اللون المرتبط بالصورة')
-                        //     ->relationship('color', 'id')
-                        //     ->getOptionLabelFromRecordUsing(fn($record) => $record->name['ar'] ?? $record->name['en'] ?? $record->id)
-                        //     ->searchable()
-                        //     ->preload(),
-                        // Toggle::make('is_primary')->label('الصورة الرئيسية')->default(false),
-                        // TextInput::make('sort_order')->label('الترتيب')->numeric()->integer()->minValue(0)->default(0)->required(),
-                    ])->columns(2),
+                            ->required()
+                            ->fetchFileInformation(false)
+                            ->saveUploadedFileUsing(fn(TemporaryUploadedFile $file): string => (new ProductImage())->uploadFile($file, 'products'))
+                            ->getUploadedFileUsing(static function (BaseFileUpload $component, string $file, string|array|null $storedFileNames): ?array {
+                                if (blank($file)) {
+                                    return null;
+                                }
+
+                                $fileName = basename(str_replace('\\', '/', $file));
+
+                                return [
+                                    'name' => $fileName,
+                                    'size' => 0,
+                                    'type' => null,
+                                    'url' => asset('assets/uploads/products/' . $fileName),
+                                ];
+                            }),
+                        Toggle::make('is_primary')
+                            ->label('الصورة الأساسية')
+                            ->default(false),
+                        TextInput::make('sort_order')
+                            ->label('الترتيب')
+                            ->numeric()
+                            ->integer()
+                            ->minValue(0)
+                            ->default(0),
+                    ])->columns(3),
             ]),
             // Section::make('المقاسات والألوان والمخزون')->schema([
             //     Repeater::make('variants')

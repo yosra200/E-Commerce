@@ -27,4 +27,14 @@ class ProductImage extends Model
     {
         return $this->belongsTo(Color::class);
     }
+
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = $this->uploadFile($value, 'products');
+    }
+
+    public function getImageAttribute($value)
+    {
+        return $value ? asset('assets/uploads/products/' . $value) : '';
+    }
 }

@@ -44,6 +44,13 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = $this->uploadFile($value, 'products');
+    }
 
-    
+    public function getImageAttribute($value)
+    {
+        return $value ? asset('assets/uploads/products/' . $value) : '';
+    }
 }
