@@ -37,7 +37,7 @@ class CategoryForm
                 //     }),
 
 
-                TextInput::make('sulug')
+                TextInput::make('slug')
                     ->label('الرابط ')
                     ->required(),
 
