@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 use App\Traits\Uploadable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
@@ -19,9 +20,23 @@ class Category extends Model
     ];
     public array $translatable = ['name'];
 
+    public function setSlugAttribute($value): void
+    {
+        $base = $value;
+
+        if (blank($base)) {
+            $base = $this->name;
+
+            if (is_array($base)) {
+                $base = $base['en'] ?? $base['ar'] ?? '';
+            }
+        }
+
+        $this->attributes['slug'] = Str::slug((string) $base);
+    }
+
     protected $casts = [
         // 'name' => 'JSON',
-        // 'slug' => 'array',
         'is_active' => 'boolean'
     ];
 

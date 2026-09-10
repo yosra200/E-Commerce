@@ -27,15 +27,7 @@ class CategoryForm
                     ->label('الاسم بالانجليزيه')
                     ->rules(['required'])
                     ->markAsRequired()->maxLength(255),
-                // TextInput::make('slug_ar')
-                //     ->label('الرابط بالعربي')
-                //     ->required()
-                //     ->formatStateUsing(function ($state, $record) {
-                //         return $record
-                //             ? $record->getTranslation('slug', 'ar')
-                //             : $state;
-                //     }),
-
+    
 
                 TextInput::make('slug')
                     ->label('الرابط ')

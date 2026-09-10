@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->json('name');
 
-            $table->json('slug')->unique();
+            $table->string('slug')->unique();
 
             $table->string('image')->nullable();
 
